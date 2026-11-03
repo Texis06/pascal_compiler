@@ -53,6 +53,14 @@
 program: expr = {root = $1;}
 
 expr:
+  INT {
+    $$ = ast_integer($1);
+  }
+  |
+  FLOAT {
+    $$ = ast_float($1);
+  }
+  |
   expr PLUS expr { 
     $$ = ast_operation(PLUS, $1, $3); 
   }
