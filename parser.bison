@@ -19,6 +19,7 @@
   GREATER
   LESS
   EQUAL
+  EQUIV
   NOT
   OR
   AND
@@ -26,12 +27,13 @@
   RPAREN
   SEMICOLON
   COLON
+  COMMA
   DOT
 
 // falta precedências dos operadores
 %left PLUS MINUS
 %left DIV MULT MOD
-%left OR AND GREATER LESS EQUAL
+%left OR AND GREATER LESS EQUAL EQUIV
 %right NOT
 %start program 
 
