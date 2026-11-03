@@ -9,15 +9,14 @@
   ELSE
   DO 
   THEN
-  INT 
+  INTEGER 
   REAL
-  STR
   BOOL
   PLUS
   MINUS
   DIV 
   MULT
-  MORE
+  GREATER
   LESS
   EQUAL
   NOT
@@ -32,7 +31,7 @@
 // falta precedências dos operadores
 %left PLUS MINUS
 %left DIV MULT MOD
-%left OR AND MORE LESS EQUAL
+%left OR AND GREATER LESS EQUAL
 %right NOT
 %start program 
 
