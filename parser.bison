@@ -20,6 +20,9 @@
   MORE
   LESS
   EQUAL
+  NOT
+  OR
+  AND
   LPAREN
   RPAREN
   SEMICOLON
@@ -27,7 +30,10 @@
   DOT
 
 // falta precedências dos operadores
-
+%left PLUS MINUS
+%left DIV MULT MOD
+%left OR AND MORE LESS EQUAL
+%right NOT
 %start program 
 
 // quando forem criados headers/variaveis globais colocar aqui
