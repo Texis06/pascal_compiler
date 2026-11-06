@@ -44,21 +44,52 @@
 %code requires{
   #include <stdio.h>
   #include <stdlib.h>
-
+  #include "ast.h"
+  extern int yylex();
+  extern FILE* yyin;
+  extern void yyerror(const char* msg);
   extern Expr* root;
 }
 
 %%
+program:
+  PROGRAM ID SEMICOLON var_space function;
 
-program: expr = {root = $1;}
+var_space:
+  VAR declarations;
+
+declarations:
+  ID COLON type SEMICOLON declarations;
+  |
+  ID COLON type SEMICOLON;
+
+statement:
+  comment;
+  | 
+  assignment;
+  |
+  whileLoop;
+
+comment: /* empty */
+
+assignment: ID ASSIGN expr;
+
+whileLoop: WHILE expr DO statement;
+
+type:
+  INT;
+  |
+  FLOAT;
+  |
+  BOOL;
 
 expr:
   INT {
     $$ = ast_integer($1);
   }
   |
-  FLOAT {
-    $$ = ast_float($1);
+  REAL {
+    $$ = ast_real($1);
   }
   |
   expr PLUS expr { 
